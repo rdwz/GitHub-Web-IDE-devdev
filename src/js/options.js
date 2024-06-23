@@ -10,11 +10,15 @@ const defaultOptions = {
   stackBlitz: true,
   gitpod: true,
   glitch: true,
+  idx: true,
   sourcegraph: true,
+  jsDelivr: false,
   activeForks: false,
+  usefulForks: false,
   gitpop2: false,
-  gitHubMemory: false,
+  devPod: false,
   cloneInVSCode: true,
+  cloneInVSCodeInsiders: false,
   openInNewTab: true
 };
 let options = { ...defaultOptions };
@@ -28,10 +32,9 @@ const load = async function () {
 
 // Save options to storage
 const save = async function (object = options) {
-  if (!Object.keys(object).some((key) => key !== 'openInNewTab' && options[key])) {
+  if (!Object.keys(object).some((key) => options[key])) {
     object = {
-      gitHubDev: true,
-      openInNewTab: object.openInNewTab
+      gitHubDev: true
     };
   }
 
